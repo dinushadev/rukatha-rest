@@ -6,4 +6,8 @@ public interface UserService {
 
 	UserDto createOrUpdateUser(UserDto newUser);
 
+	UserDto registerUser(UserDto newUser);
+
+	Boolean isRegisterdUser(UserDto user);
+
 }

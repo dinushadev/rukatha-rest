@@ -1,0 +1,8 @@
+
+
+<datastore-indexes autoGenerate="true">
+
+    <datastore-index kind="UserEntity" ancestor="false" source="manual">
+        <property name="email" direction="asc"/>
+    </datastore-index>
+</datastore-indexes>
