@@ -46,7 +46,7 @@ public class UserEntityManagerImpl extends RukathaEntityManager<UserEntity> impl
 	public UserEntity getUserByEmail(String email) {
 		
 		Query query = new Query(getKind());
-		Query.Filter filter = new  Query.FilterPredicate(UserEntity.FIELD_NAME_EMAIL,FilterOperator.EQUAL,email);
+		Query.Filter filter = new  Query.FilterPredicate(UserEntity.FIELD_EMAIL,FilterOperator.EQUAL,email);
 		query.setFilter(filter);
 		FetchOptions fetchOptions = FetchOptions.Builder.withDefaults();
 		Iterable<UserEntity> userList = queryEntities(query, fetchOptions);

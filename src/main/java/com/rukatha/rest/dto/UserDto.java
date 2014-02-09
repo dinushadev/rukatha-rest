@@ -5,10 +5,13 @@ public class UserDto {
 	
 	private String email;
 	
-	private String firstName;
+	private String givenName;
 	
-	private String lastName;
+	private String familyName;
 
+	private String gender;
+	
+	private String potourl;
 
 	public String getEmail() {
 		return email;
@@ -18,23 +21,38 @@ public class UserDto {
 		this.email = email;
 	}
 
-
-	public String getFirstName() {
-		return firstName;
+	public String getGivenName() {
+		return givenName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setGivenName(String givenName) {
+		this.givenName = givenName;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getFamilyName() {
+		return familyName;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
 	}
-	
-	
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getPotourl() {
+		return potourl;
+	}
+
+	public void setPotourl(String potourl) {
+		this.potourl = potourl;
+	}
+
+
 
 }

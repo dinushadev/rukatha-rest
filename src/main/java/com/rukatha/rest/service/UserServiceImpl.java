@@ -35,8 +35,10 @@ public class UserServiceImpl implements UserService{
 		 
 		UserEntity userEntity = userEntityManager.newUser(newUser.getEmail());
 		userEntity.setEmail(newUser.getEmail());
-		userEntity.setFname(newUser.getFirstName());
-		userEntity.setLname(newUser.getLastName());
+		userEntity.setGivenNname(newUser.getGivenName());
+		userEntity.setFamilyName(newUser.getFamilyName());
+		userEntity.setGender(newUser.getGender());
+		userEntity.setPotoUrl(newUser.getPotourl());
 		
 		logger.info("user id:"+userEntity.getUserId());
 		

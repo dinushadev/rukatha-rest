@@ -42,7 +42,7 @@
 			 <a href="kataworkbench.html" class="btn btn-default btn-sm" role="button">
 			  <span class="glyphicon glyphicon-plus glyphiconColorGray"></span>
 			</a>
-			 <a href="index" class="btn btn-primary btn-sm" role="button">Log out</a>
+			 <a href="/" class="btn btn-primary btn-sm" role="button">Log out</a>
 			
 		</div>
       <div class="container">

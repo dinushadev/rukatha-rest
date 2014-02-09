@@ -24,4 +24,10 @@ public class UIController {
 		
 		return "signup";
 	}
+	
+	@RequestMapping("/userhome")
+	public String userhome() {
+		
+		return "userhome";
+	}
 }

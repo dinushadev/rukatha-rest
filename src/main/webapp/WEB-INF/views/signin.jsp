@@ -137,14 +137,13 @@
 						$.ajax({
 					        type: 'POST',              
 					        url: '../user/check',
-					        dataType: 'json',
 					         contentType: 'application/json',
-					         data: JSON.stringify({ email: obj.email, firstName: obj.given_name }),
-					        success: function (data) { alert("success"); },
-					        error: function (response) {
-					            alert("error: " + response.responseText);
-					        }
-					    });
+					         data: JSON.stringify({ email: obj.email, givenName: obj.given_name, familyName: obj.family_name, gender:obj.gender, potourl:obj.picture }),
+						      success: function (data) { alert("success"); }
+					    }).done(function( msg ) {
+						    alert( "Data Saved: " + msg.status );
+						    isUserRegistered= msg.status;
+						 });
 
 						if(!isUserRegistered){
 							var el = document.getElementById('email');
@@ -152,12 +151,32 @@
 							$('#regConformBodyModal').text(bodyText);
 							$('#regConformModal').modal('show');
 							$('#regConformModalRegBtn').click(function(){
+								//register user
+										
+								$.ajax({
+							        type: 'POST',              
+							        url: '../user/reg',
+							        dataType: 'json',
+							         contentType: 'application/json',
+							         data: JSON.stringify({ email: obj.email, givenName: obj.given_name, familyName: obj.family_name, gender:obj.gender, potourl:obj.picture }),
+							        success: function (data) { alert("success"); }
+							    }).done(function( msg ) {
+								    alert( "User Registered: " + msg.status );
+								    isUserRegistered= msg.status;
+								 });
+
+								
+								//rediret to home page
 								prepareUserFront();
 							});
 							$('#regConformModalCancelBtn').click(function(){
 								//got to login page
 							});
 
+						}else{
+
+							//rediret to home page
+							prepareUserFront();
 						}
 				
 

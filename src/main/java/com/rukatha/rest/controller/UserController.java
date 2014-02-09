@@ -35,7 +35,7 @@ public class UserController {
 		
 		Boolean  status = userService.isRegisterdUser(user);
 		
-		return "{'statuse':"+status+"}";
+		return "{'statuse':'"+status+"'}";
 	}
 
 	@RequestMapping(value ="/check",method =RequestMethod.GET)

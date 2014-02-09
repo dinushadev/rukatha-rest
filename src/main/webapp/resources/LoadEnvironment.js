@@ -5,7 +5,7 @@ function prepareUserFront(){
 	// alert('google clicked');
 	// isUserSignedIn = true;
 	// alert(isUserSignedIn);
-	window.location.replace("userhome.html");
+	window.location.replace("userhome");
 /* 	console.log('clicked');
 	window.location.replace("index.html");
 	divObj = document.getElementById("interactionBtnsDiv"); */
