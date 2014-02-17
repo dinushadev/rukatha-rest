@@ -1,0 +1,10 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.btn {border-radius: 0;} /*To get rid of all the rounded edges of buttons*/
+/*.input {border-radius: 0;} To get rid of all the rounded edges of input fields*/

@@ -30,4 +30,10 @@ public class UIController {
 		
 		return "userhome";
 	}
+	
+	@RequestMapping("/kataworkbench")
+	public String kataworkbench() {
+		
+		return "kataworkbench";
+	}
 }

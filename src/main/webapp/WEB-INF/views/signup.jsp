@@ -11,7 +11,7 @@
     <title>Join Rukata</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../resources/dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
@@ -59,9 +59,9 @@
 			</div>
  -->
 			<div class="row">
-				<img class="img-responsive col-md-4" src="res/facebook.png" alt="facebook login">
-				<img class="img-responsive col-md-4" src="res/twitter.png" alt="twitter login" >
-				<img class="img-responsive col-md-4" src="res/Google-G-Logo.png" alt="google login">
+				<img class="img-responsive col-md-4" src="../resources/res/facebook.png" alt="facebook login">
+				<img class="img-responsive col-md-4" src="../resources/res/twitter.png" alt="twitter login" >
+				<img class="img-responsive col-md-4" src="../resources/res/Google-G-Logo.png" alt="google login">
 			</div>		
 		</div>
 		</div>
@@ -73,4 +73,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
   </body>
 </html>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+
+ <script src="../resources/assets/js/jquery.js"></script>
+   <script src="../resources/dist/js/bootstrap.min.js"></script>
