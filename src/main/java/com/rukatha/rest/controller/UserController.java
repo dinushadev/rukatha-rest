@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.rukatha.rest.dto.UserDto;
+import com.rukatha.rest.dto.UserReqDto;
 import com.rukatha.rest.service.UserService;
 
 
@@ -23,25 +23,25 @@ public class UserController {
 	
 	
 	@RequestMapping(value ="/reg",method =RequestMethod.POST)
-	public @ResponseBody UserDto registerUser(@RequestBody final UserDto newUser){
+	public @ResponseBody UserReqDto registerUser(@RequestBody final UserReqDto newUser){
 		
 		
-		UserDto user = userService.registerUser(newUser);
+		UserReqDto user = userService.registerUser(newUser);
 		return user;
 	}
 	
 	@RequestMapping(value ="/check",method =RequestMethod.POST)
-	public @ResponseBody String userCheck(@RequestBody final UserDto user){
+	public @ResponseBody String userCheck(@RequestBody final UserReqDto user){
 		
 		Boolean  status = userService.isRegisterdUser(user);
 		
-		return "{'statuse':'"+status+"'}";
+		return "{\"status\":"+status+"}";
 	}
 
 	@RequestMapping(value ="/check",method =RequestMethod.GET)
 	public @ResponseBody String userCheck(){
 		
 		
-		return "{'statuse':true}";
+		return "{'status':true}";
 	}
 }

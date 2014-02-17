@@ -2,6 +2,7 @@ package com.rukatha.rest.entity;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
+import com.rukatha.rest.dto.AuthProvider;
 
 public class UserEntity extends BaseEntity {
 	public static final String FIELD_NAME_GIVEN_NAME = "given_name";
@@ -9,6 +10,7 @@ public class UserEntity extends BaseEntity {
 	public static final String FIELD_EMAIL = "email";
 	public static final String FIELD_GENDER = "gender";
 	public static final String FIELD_POTO_URL = "poto";
+	public static final String AUTH_PROVIDER = "auth_provider";
 
 	public UserEntity(Entity entity) {
 		super(entity);
@@ -64,5 +66,13 @@ public class UserEntity extends BaseEntity {
 
 	public void setPotoUrl(String potourl) {
 		entity.setProperty(FIELD_POTO_URL, potourl);
+	}
+	
+	public AuthProvider getAuthProvider() {
+		return AuthProvider.valueOf((String)entity.getProperty(AUTH_PROVIDER));
+	}
+	
+	public void setAuthProvider(AuthProvider authProvidr) {
+		entity.setProperty(AUTH_PROVIDER, authProvidr.toString());
 	}
 }

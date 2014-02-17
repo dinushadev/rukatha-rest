@@ -93,7 +93,7 @@
 				  // Additional params
 				  var additionalParams = {
 				    'theme' : 'dark',
-				    'scope': 'https://www.googleapis.com/auth/userinfo.profile'
+				    'scope': 'email profile'
 				  };
 
 				  gapi.signin.render('googleSigninBtn', additionalParams);
@@ -111,7 +111,7 @@
 				    	// Load the oauth2 libraries to enable the userinfo methods.
 					    gapi.client.load('oauth2', 'v2', function() {
 					    	var request = gapi.client.oauth2.userinfo.get();
-					    	request.execute(getEmailCallback);
+					    	request.execute(getUserInfoCallback);
 					    });
 				    } 
 				    else if (authResult['error']) {
@@ -119,65 +119,34 @@
 					}
 				}
 
-				function getEmailCallback(obj){
+				function getUserInfoCallback(obj){
 					//alert(JSON.stringify(obj));
 					//User is avilable on the RuKatha
 					var isUserRegistered = false;
-				/*	$.ajax({
-						  type: "POST",
-						  url: "http://localhost:8888/user/check",
-						  contentType: 'application/json',
-						  data: { email: obj.email, fistName: obj.given_name }
-						})
-						  .done(function( msg ) {
-						    alert( "Data Saved: " + msg.status );
-						    isUserRegistered= msg.status;
-						 });
-*/
+			
 						$.ajax({
 					        type: 'POST',              
 					        url: '../user/check',
-					         contentType: 'application/json',
-					         data: JSON.stringify({ email: obj.email, givenName: obj.given_name, familyName: obj.family_name, gender:obj.gender, potourl:obj.picture }),
-						      success: function (data) { alert("success"); }
-					    }).done(function( msg ) {
-						    alert( "Data Saved: " + msg.status );
-						    isUserRegistered= msg.status;
-						 });
+					        headers: {
+								'Accept': 'application/json',
+								'Content-Type': 'application/json'
+							},
+					        dataType: 'json',
+					         data: JSON.stringify({ email: obj.email, givenName: obj.given_name, familyName: obj.family_name, gender:obj.gender, potourl:obj.picture,authProvider:'GOOGLE'}),
+						      success: function (data) {
+						    	  
+						    //	  alert("data.status "+data.status+"  "+JSON.stringify(data) );
+						    	  isUserRegistered= data.status;
+						    	//  alert("isUserRegistered: "+isUserRegistered);
+					    	  	if(!isUserRegistered){
+					    	  		regConformation(obj);
+					    	  	}else{
+					    	  		prepareUserFront();
+					    	  	}
+						      }
+					    });
 
-						if(!isUserRegistered){
-							var el = document.getElementById('email');
-							var bodyText = "Hi, "+obj.given_name+", Welcom to RuKatha."
-							$('#regConformBodyModal').text(bodyText);
-							$('#regConformModal').modal('show');
-							$('#regConformModalRegBtn').click(function(){
-								//register user
-										
-								$.ajax({
-							        type: 'POST',              
-							        url: '../user/reg',
-							        dataType: 'json',
-							         contentType: 'application/json',
-							         data: JSON.stringify({ email: obj.email, givenName: obj.given_name, familyName: obj.family_name, gender:obj.gender, potourl:obj.picture }),
-							        success: function (data) { alert("success"); }
-							    }).done(function( msg ) {
-								    alert( "User Registered: " + msg.status );
-								    isUserRegistered= msg.status;
-								 });
-
-								
-								//rediret to home page
-								prepareUserFront();
-							});
-							$('#regConformModalCancelBtn').click(function(){
-								//got to login page
-							});
-
-						}else{
-
-							//rediret to home page
-							prepareUserFront();
-						}
+						
 				
 
 					var email;
@@ -188,6 +157,46 @@
 					//alert(email);
 					
 			}
+				
+				
+			function regConformation(obj){
+				var em = document.getElementById('email');
+				var bodyText = "Hi, "+obj.given_name+","+em+" Welcom to RuKatha."
+				$('#regConformBodyModal').text(bodyText);
+				$('#regConformModal').modal('show');
+				$('#regConformModalRegBtn').click(function(){
+					//register user
+							
+					$.ajax({
+				        type: 'POST',              
+				        url: '../user/reg',
+				        dataType: 'json', 
+				        headers: {
+							'Accept': 'application/json',
+							'Content-Type': 'application/json'
+						},
+				         data: JSON.stringify({ email: obj.email, givenName: obj.given_name, familyName: obj.family_name, gender:obj.gender, potourl:obj.picture,authProvider:'GOOGLE' }),
+				        success: function (data) {
+				        	if(data.email == obj.email){
+				        		//alert( "User Registered: " + data.status );
+							//    isUserRegistered= msg.status;
+								//rediret to home page
+								prepareUserFront();
+				        	}else{
+				        		alert( "Error while User Registration " );
+				        	}
+				        	  	
+				        ; }
+				    });
+
+					
+					//rediret to home page
+					//prepareUserFront();
+				});
+				$('#regConformModalCancelBtn').click(function(){
+					//got to login page
+				});
+			}	
 
 				</script>
 <!-- In the callback, you would hide the gSignInWrapper element on a

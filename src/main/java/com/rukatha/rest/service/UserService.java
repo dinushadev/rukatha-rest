@@ -1,13 +1,13 @@
 package com.rukatha.rest.service;
 
-import com.rukatha.rest.dto.UserDto;
+import com.rukatha.rest.dto.UserReqDto;
 
 public interface UserService {
 
-	UserDto createOrUpdateUser(UserDto newUser);
+	UserReqDto createOrUpdateUser(UserReqDto newUser);
 
-	UserDto registerUser(UserDto newUser);
+	UserReqDto registerUser(UserReqDto newUser);
 
-	Boolean isRegisterdUser(UserDto user);
+	Boolean isRegisterdUser(UserReqDto user);
 
 }

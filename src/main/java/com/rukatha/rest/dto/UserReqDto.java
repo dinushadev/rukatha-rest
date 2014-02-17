@@ -1,6 +1,6 @@
 package com.rukatha.rest.dto;
 
-public class UserDto {
+public class UserReqDto {
 
 	
 	private String email;
@@ -12,6 +12,10 @@ public class UserDto {
 	private String gender;
 	
 	private String potourl;
+	
+	private AuthProvider authProvider;
+	
+	private String token;
 
 	public String getEmail() {
 		return email;
@@ -51,6 +55,22 @@ public class UserDto {
 
 	public void setPotourl(String potourl) {
 		this.potourl = potourl;
+	}
+
+	public AuthProvider getAuthProvider() {
+		return authProvider;
+	}
+
+	public void setAuthProvider(AuthProvider authProvider) {
+		this.authProvider = authProvider;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 

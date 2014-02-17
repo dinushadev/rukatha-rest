@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.rukatha.rest.HomeController;
 import com.rukatha.rest.dao.UserEntityManager;
 import com.rukatha.rest.dao.UserEntityManagerImpl;
-import com.rukatha.rest.dto.UserDto;
+import com.rukatha.rest.dto.UserReqDto;
 import com.rukatha.rest.entity.UserEntity;
 
 @Service
@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService{
 	private UserEntityManagerImpl userEntityManager;
 	
 	@Override
-	public UserDto createOrUpdateUser(UserDto newUser) {
+	public UserReqDto createOrUpdateUser(UserReqDto newUser) {
 		
 		//UserDto user = userDao.createOrUpdateUser(newUser);
 		//return user;
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public UserDto registerUser(UserDto newUser) {
+	public UserReqDto registerUser(UserReqDto newUser) {
 		 
 		UserEntity userEntity = userEntityManager.newUser(newUser.getEmail());
 		userEntity.setEmail(newUser.getEmail());
@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService{
 		userEntity.setFamilyName(newUser.getFamilyName());
 		userEntity.setGender(newUser.getGender());
 		userEntity.setPotoUrl(newUser.getPotourl());
+		userEntity.setAuthProvider(newUser.getAuthProvider());
 		
 		logger.info("user id:"+userEntity.getUserId());
 		
@@ -50,7 +51,7 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public Boolean isRegisterdUser(UserDto user) {
+	public Boolean isRegisterdUser(UserReqDto user) {
 		
 		UserEntity userEntity = userEntityManager.getUserByEmail(user.getEmail());
 		
