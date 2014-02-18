@@ -42,7 +42,7 @@
 			 <a href="kataworkbench.html" class="btn btn-default btn-sm" role="button">
 			  <span class="glyphicon glyphicon-plus glyphiconColorGray"></span>
 			</a>
-			 <a href="/" class="btn btn-primary btn-sm" role="button">Log out</a>
+			 <a href="/" class="btn btn-primary btn-sm" onclick="logOut()" role="button">Log out</a>
 			
 		</div>
       <div class="container">
@@ -75,6 +75,6 @@
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="../resources/dist/js/bootstrap.min.js"></script>
 
-	
+	  <script src="../resources/scripts/user_home.js"></script>
   </body>
 </html>
