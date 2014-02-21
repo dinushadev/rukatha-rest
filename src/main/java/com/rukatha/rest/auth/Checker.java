@@ -1,5 +1,4 @@
 package com.rukatha.rest.auth;
-
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Arrays;
