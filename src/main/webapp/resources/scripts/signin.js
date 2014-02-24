@@ -1,4 +1,8 @@
 	/* Executed when the APIs finish loading */
+	
+				var access_token; 
+				var id_token;
+	
 				function render() {
 
 				  // Additional params
@@ -16,6 +20,7 @@
 					//alert(authResult['access_token']);
 					if (authResult['access_token'] && authResult['g-oauth-window']) {			    	
 				    	//get Email of the user
+				    	access_token = authResult['access_token'];
 				    	gapi.auth.setToken(authResult); 	
 				    	id_token=authResult['id_token'];  
 				    	
@@ -37,10 +42,11 @@
 			
 						$.ajax({
 					        type: 'POST',              
-					        url: '../user/check',
+					        url: '../rest/user/check',
 					        headers: {
 								'Accept': 'application/json',
-								'Content-Type': 'application/json'
+								'Content-Type': 'application/json',
+								'Authorization':'token GOOGLE:'+id_token+':'+ obj.email
 							},
 					        dataType: 'json',
 					         data: JSON.stringify({ email: obj.email, givenName: obj.given_name, familyName: obj.family_name, gender:obj.gender, potourl:obj.picture,authProvider:'GOOGLE'}),
@@ -80,11 +86,12 @@
 							
 					$.ajax({
 				        type: 'POST',              
-				        url: '../user/reg',
+				        url: '../rest/user/reg',
 				        dataType: 'json', 
 				        headers: {
 							'Accept': 'application/json',
-							'Content-Type': 'application/json'
+							'Content-Type': 'application/json',
+							'Authorization':'token GOOGLE:'+id_token+':'+ obj.email
 						},
 				         data: JSON.stringify({ email: obj.email, givenName: obj.given_name, familyName: obj.family_name, gender:obj.gender, potourl:obj.picture,authProvider:'GOOGLE' }),
 				        success: function (data) {

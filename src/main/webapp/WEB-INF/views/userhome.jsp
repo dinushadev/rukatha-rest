@@ -67,12 +67,19 @@
       </div>
 
     </div><!-- /.container -->
-
+ <!-- Place this asynchronous JavaScript just before your </body> tag -->
+    <script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+    </script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+   <script src="../resources/assets/js/jquery.js"></script>
     <script src="../resources/dist/js/bootstrap.min.js"></script>
 
 	  <script src="../resources/scripts/user_home.js"></script>

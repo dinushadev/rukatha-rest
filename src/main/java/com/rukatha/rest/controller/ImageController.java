@@ -1,9 +1,5 @@
 package com.rukatha.rest.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.HashMap;
-
 import javax.xml.bind.DatatypeConverter;
 
 import org.springframework.stereotype.Controller;
@@ -17,13 +13,14 @@ import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.OutputSettings;
 import com.google.appengine.api.images.Transform;
+import com.rukatha.rest.auth.BaseController;
 import com.rukatha.rest.dto.ImageReqDto;
 
 
 
 @Controller
-@RequestMapping("/image")
-public class ImageController {
+@RequestMapping("/rest/image")
+public class ImageController extends BaseController{
 
 	
 	@RequestMapping(method=RequestMethod.POST)

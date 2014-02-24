@@ -7,13 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.rukatha.rest.auth.BaseController;
 import com.rukatha.rest.dto.UserReqDto;
 import com.rukatha.rest.service.UserService;
 
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/rest/user")
+public class UserController extends BaseController{
 	
 	@Autowired
 	private UserService userService;
@@ -36,10 +37,4 @@ public class UserController {
 		return "{\"status\":"+status+"}";
 	}
 
-	@RequestMapping(value ="/check",method =RequestMethod.GET)
-	public @ResponseBody String userCheck(){
-		
-		
-		return "{'status':true}";
-	}
 }

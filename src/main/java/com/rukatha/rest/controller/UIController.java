@@ -1,11 +1,16 @@
 package com.rukatha.rest.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.rukatha.rest.auth.BaseController;
 
 @Controller
 @RequestMapping("/ui")
-public class UIController {
+public class UIController extends BaseController{
 
 	@RequestMapping("/")
 	public String index() {
@@ -35,5 +40,11 @@ public class UIController {
 	public String kataworkbench() {
 		
 		return "kataworkbench";
+	}
+	
+	@RequestMapping("/logout")
+	public @ResponseBody String logout(HttpServletRequest request) {
+		request.getSession().setAttribute("USER_SESSION", "OFF");
+		return "{\"status\":\"true\"}";
 	}
 }

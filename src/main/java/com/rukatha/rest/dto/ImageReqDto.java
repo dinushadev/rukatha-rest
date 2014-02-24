@@ -12,8 +12,5 @@ public class ImageReqDto {
 		this.img = img;
 	}
 
-
 	
-	
-
 }

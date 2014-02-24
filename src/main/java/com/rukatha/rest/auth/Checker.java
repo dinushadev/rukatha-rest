@@ -16,6 +16,7 @@ public class Checker {
     private final String mAudience;
     private final GoogleIdTokenVerifier mVerifier;
     private final JsonFactory mJFactory;
+    
     private String mProblem = "Verification failed. (Time-out?)";
 
     public Checker(String[] clientIDs, String audience) {

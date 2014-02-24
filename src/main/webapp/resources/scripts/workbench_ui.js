@@ -84,7 +84,7 @@ $(document).ready( function() {
 
                     //Sending the binary string of the image to the back-end
     	 			$.ajax({
-    		            url: '../image',
+    		            url: '../rest/image',
     		            type: 'post',
     		            dataType: 'json',
     		            contentType: 'application/json',

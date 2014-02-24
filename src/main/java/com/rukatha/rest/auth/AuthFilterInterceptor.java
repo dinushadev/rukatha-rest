@@ -1,15 +1,10 @@
 package com.rukatha.rest.auth;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,12 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Dinusha Nandika
  *
  */
-public class RequestFilterInterceptor implements HandlerInterceptor {
+public class AuthFilterInterceptor implements HandlerInterceptor {
 
 	
-	private static final Logger log = LoggerFactory.getLogger(RequestFilterInterceptor.class);
+	private static final Logger log = LoggerFactory.getLogger(AuthFilterInterceptor.class);
 
-	private String googleClientID;
+	
 	
 	private Authorizer authorizer;
 	
@@ -57,7 +52,6 @@ public class RequestFilterInterceptor implements HandlerInterceptor {
 	        log.info("** Remote Address : " + request.getRemoteAddr());
 	        log.info("** Context Path    : " + request.getContextPath());
 	        log.info("** Request URI    : " + request.getRequestURI());
-	        log.info("** Query Pram   : " + request.getParameter("ref"));
 	        log.info("*******************************************************");
 
 			String authzToken = null;
@@ -66,17 +60,21 @@ public class RequestFilterInterceptor implements HandlerInterceptor {
 			String authProvier =null;
 			String email =null;
 			
-		
+			//Temp only for ui navigation / not for restful web service
+			String sessionVal =(String) request.getSession().getAttribute("USER_SESSION");
+			
+			if(request.getRequestURI().startsWith("/ui") && sessionVal!=null && sessionVal.equals("ON")){
+				return true;
+			}
 			
 			
-				try {
 					authzToken = request.getHeader("Authorization");
 					if(authzToken== null){
-						throw new UnauthorizedException("ex");
+						throw new UnauthorizedException("Invalid Auth tag");
 					}
 					String [] tokenArr = authzToken.split(" ");
 					if(tokenArr.length<2){
-						throw new ForbiddenException();
+						throw new UnauthorizedException("Invalid Auth tag");
 					}
 					String tokenData = tokenArr[1];
 					String[] tokenDataArr= null;
@@ -90,9 +88,18 @@ public class RequestFilterInterceptor implements HandlerInterceptor {
 						email = tokenDataArr[2];
 						
 						if(idToken!=null && authProvier!=null && authProvier.equals("GOOGLE")){
-							authorizer = new GoogleAuthorizer(googleClientID);
+							authorizer = AuthorizerFactory.createAutorizer(authProvier);
 							
 							isTokenValid  = authorizer.authorize(idToken,email);
+							
+							//Temp only for ui navigation / not for restful web service
+							if(isTokenValid){
+								request.getSession().setAttribute("USER_SESSION", "ON");
+							}else{
+								request.getSession().setAttribute("USER_SESSION", "OFF");
+							}
+							
+							
 						}else{
 							throw new UnauthorizedException("Valid token required");
 						}
@@ -104,19 +111,11 @@ public class RequestFilterInterceptor implements HandlerInterceptor {
 			
 					
 				
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					//throw new UnauthorizedException("Ex");
-					 throw new UnauthorizedException("Valid token required");
-				}
 			
 			
 			return true;
 	}
 
-	public void setGoogleClientID(String googleClientID) {
-		this.googleClientID = googleClientID;
-	}
+
 
 }

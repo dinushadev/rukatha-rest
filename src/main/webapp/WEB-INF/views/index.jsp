@@ -18,30 +18,25 @@
     <link href="../resources/starter-template.css" rel="stylesheet">
 	<link href="../resources/shared.css" rel="stylesheet">
 	
-	<!-- Jquery and Javascript for building the user environment -->
-	<!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="LoadEnvironment.js"></script> -->
 	
-    <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="../resources/assets/js/jquery.js"></script>
+    <script src="../resources/dist/js/bootstrap.min.js"></script>
+	
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-	
 	<script defer="defer">
-		
+	/* 	
 		$(function(){
 				//alert(isUserSignedIn);				
-				alert(stackoverflow.com.pathname);
+			//	alert(stackoverflow.com.pathname);
 				if(isUserSignedIn){
-					alert(isUserSignedIn);
+					//alert(isUserSignedIn);
 					$('#interactionBtnsDiv').html('<a href="#"><img src="res/Add_Story.png" alt="add a story"></a>');
 					$('#interactionBtnsDiv').html('<a href="signin.html" class="btn btn-primary btn-sm" role="button">Log out</a>');
 				}	
-		});
+		}); */
 		
 	</script>
 	
@@ -81,11 +76,7 @@
     </div><!-- /.container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../resources/dist/js/bootstrap.min.js"></script>
+
 
 	
   </body>

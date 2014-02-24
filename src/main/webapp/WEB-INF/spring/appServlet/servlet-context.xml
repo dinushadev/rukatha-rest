@@ -43,17 +43,16 @@
 	</interceptors>
 	<context:component-scan base-package="com.rukatha.rest" />
 
-
-
 	<interceptors>
 		<interceptor>
 			<mapping path="/ui/**" />
 			<mapping path="/rest/**" />
 			<exclude-mapping path="/ui/signin.*" />
 			<exclude-mapping path="/ui/" />
+				<exclude-mapping path="/ui/logout" />
 			<beans:bean id="accessControlleInterceptor"
-				class="com.rukatha.rest.auth.RequestFilterInterceptor" >
-			    <beans:property name="googleClientID" value="${google_client_id}" />
+				class="com.rukatha.rest.auth.AuthFilterInterceptor" >
+			    <!-- <beans:property name="googleClientID" value="${google_client_id}" /> -->
 			</beans:bean>
 		</interceptor>
 	</interceptors>

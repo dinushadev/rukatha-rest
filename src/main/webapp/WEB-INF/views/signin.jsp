@@ -30,7 +30,7 @@
 
   <body>
 
- <!-- Place this asynchronous JavaScript just before your </body> tag -->
+ <!-- Place this asynchronous JavaScript just before your </body> tag
     <script type="text/javascript">
       (function() {
        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -39,7 +39,7 @@
      })();
     </script>
 
-
+ -->
 
     <div class="container">
 		<!-- <div class="navbar-form navbar-right"> -->
@@ -73,7 +73,7 @@
 			<!--	<a href="#" onclick="prepareUserFront()"><img class="img-responsive col-md-4" src="res/Google-G-Logo.png" alt="google login"></a>
 -->
 
-				<meta name="google-signin-clientid" content="293977541097-e4ofc9qf74g8crdjqhmce7vk7ju3urus.apps.googleusercontent.com" />
+				<meta name="google-signin-clientid" content="293977541097-8ug38b334t08qcssdk4jlvh0qol9q9c2.apps.googleusercontent.com" />
 				<meta name="google-signin-scope" content="https://www.googleapis.com/auth/plus.login" />
 				<meta name="google-signin-requestvisibleactions" content="http://schemas.google.com/AddActivity" />
 				<meta name="google-signin-cookiepolicy" content="single_host_origin" />

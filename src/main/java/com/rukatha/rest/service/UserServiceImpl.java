@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rukatha.rest.HomeController;
-import com.rukatha.rest.dao.UserEntityManager;
 import com.rukatha.rest.dao.UserEntityManagerImpl;
 import com.rukatha.rest.dto.UserReqDto;
 import com.rukatha.rest.entity.UserEntity;
